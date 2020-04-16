@@ -1,7 +1,34 @@
 import React, { Component } from 'react'
 import './styles.css'
+import api from '../../services/api'
 
 export default class Todo extends Component {
+
+    const 
+    
+    constructor(props)
+    {
+        super(props)
+        this.state = {
+            tasks: [],
+        }
+    }
+
+    loadTasks = async () => {
+        const response = await api.get('/retrieve')
+
+        this.setState({ tasks: response.data.result }) 
+    }
+
+    checkTask = () => {
+        
+    }
+
+    componentDidMount()
+    {
+        this.loadTasks()
+    }
+
     render() {
         return (
             <div>
@@ -12,10 +39,9 @@ export default class Todo extends Component {
                     <button className="todo-button">Save</button>
                 </form>
                 <ul id="list">
-                    <li><input type="checkbox" /> Testing task</li>
-                    <li><input type="checkbox" /> Task number two</li>
-                    <li><input type="checkbox" /> Another one bites the dust</li>
-                    <li><input type="checkbox" /> Eat hamburgers</li>
+                    {this.state.tasks.map(task => (
+                        <li><input type="checkbox" onClick={this.checkTask} /> {task.title}</li>
+                    ))}
                 </ul>
                 <h1 className="title">Done</h1>
                 <ul id="done-list">

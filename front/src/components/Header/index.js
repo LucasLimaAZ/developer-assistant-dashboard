@@ -11,7 +11,7 @@ export default class Header extends Component {
                     </div>
                     <div className="col-md-10">
                         <ul>
-                            <li><a class="active" href="#">Home</a></li>
+                            <li><a className="active" href="#">Home</a></li>
                             <li><a href="#">News</a></li>
                             <li><a href="#">Contact</a></li>
                             <li><a href="#">About</a></li>
